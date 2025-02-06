@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -15,19 +16,17 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Build Docker image
+      - name: Build Docker Image
         run: docker build -t weather-reviewer .
 
-      - name: Run Docker container
+      - name: List Docker Images (Debugging)
+        run: docker images
+
+      - name: Run Docker Container
         run: |
-          docker run --name weather-reviewer-container \
+          docker run --rm --name weather-reviewer-container \
             -e API_KEY=${{ secrets.API_KEY }} \
             -e CITY=${{ secrets.CITY }} \
             -e EMAIL=${{ secrets.EMAIL }} \
             -e PASSWORD=${{ secrets.PASSWORD }} \
             weather-reviewer
-
-      - name: Cleanup
-        run: |
-          docker stop weather-reviewer-container || true
-          docker rm weather-reviewer-container || true
