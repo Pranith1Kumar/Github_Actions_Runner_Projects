@@ -1,11 +1,13 @@
+import os
 import requests
 import smtplib
 from email.message import EmailMessage
 
-API_KEY = "6e8afa2ff25a9efb1f353636b1b9df27"
-CITY = "Hyderabad"
-EMAIL = "praneethkumarellandula@gmail.com"
-PASSWORD = "xyxk qmtc racg pcso"
+# Read values from environment variables
+API_KEY = os.getenv("API_KEY")
+CITY = os.getenv("CITY")
+EMAIL = os.getenv("EMAIL")
+PASSWORD = os.getenv("PASSWORD")
 
 def get_weather():
     url = f"http://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}"
@@ -19,7 +21,7 @@ def send_email(weather):
     msg['From'] = EMAIL
     msg['To'] = EMAIL
     msg.set_content(f"The current weather in {CITY} is: {weather}.")
-    
+
     with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
         smtp.starttls()
         smtp.login(EMAIL, PASSWORD)
