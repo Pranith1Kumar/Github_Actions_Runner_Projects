@@ -5,7 +5,7 @@ from email.message import EmailMessage
 API_KEY = "6e8afa2ff25a9efb1f353636b1b9df27"
 CITY = "Hyderabad"
 EMAIL = "praneethkumarellandula@gmail.com"
-PASSWORD = "Praneeth@Kumar"
+PASSWORD = "xyxk qmtc racg pcso"
 
 def get_weather():
     url = f"http://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}"
