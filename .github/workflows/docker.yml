@@ -19,4 +19,15 @@ jobs:
         run: docker build -t weather-reviewer .
 
       - name: Run Docker container
-        run: docker run -e API_KEY=${{ secrets.API_KEY }} -e CITY=${{ secrets.CITY }} -e EMAIL=${{ secrets.EMAIL }} -e PASSWORD=${{ secrets.PASSWORD }} weather-reviewer
+        run: |
+          docker run --name weather-reviewer-container \
+            -e API_KEY=${{ secrets.API_KEY }} \
+            -e CITY=${{ secrets.CITY }} \
+            -e EMAIL=${{ secrets.EMAIL }} \
+            -e PASSWORD=${{ secrets.PASSWORD }} \
+            weather-reviewer
+
+      - name: Cleanup
+        run: |
+          docker stop weather-reviewer-container || true
+          docker rm weather-reviewer-container || true
