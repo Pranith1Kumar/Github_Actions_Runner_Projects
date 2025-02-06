@@ -20,9 +20,10 @@ jobs:
         run: docker build -t weather-reviewer:latest .
 
       - name: Run Docker container
-        run: docker run --rm \
-          -e API_KEY=${{ secrets.API_KEY }} \
-          -e CITY=${{ secrets.CITY }} \
-          -e EMAIL=${{ secrets.EMAIL }} \
-          -e PASSWORD=${{ secrets.PASSWORD }} \
-          weather-notifier
+        run: |
+          docker run --rm \
+            -e API_KEY="${{ secrets.API_KEY }}" \
+            -e CITY="${{ secrets.CITY }}" \
+            -e EMAIL="${{ secrets.EMAIL }}" \
+            -e PASSWORD="${{ secrets.PASSWORD }}" \
+            weather-reviewer:latest
