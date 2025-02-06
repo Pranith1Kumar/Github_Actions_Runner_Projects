@@ -5,6 +5,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY weather_reviewer.py .
+COPY weather-reviewer.py .
 
-CMD ["python", "weather_reviewer.py"]
+CMD ["python", "weather-reviewer.py"]
