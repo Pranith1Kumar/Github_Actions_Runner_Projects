@@ -2,6 +2,20 @@
 
 This project fetches weather data from OpenWeatherMap and sends email notifications. GitHub Actions will automate Docker image creation and execution.
 
+
+Project structure:
+
+```graphql
+weather-notifier/
+├── .github/
+│   └── workflows/
+│       └── docker.yml       # GitHub Actions workflow file
+├── weather_notifier.py      # Python script for the weather notification app
+├── Dockerfile               # Docker configuration file
+├── requirements.txt         # Dependencies for the project
+├── README.md                # Project description
+```
+
 # **🛠 Step 1: Setup GitHub Repository**
 
 1. Create a new repository on GitHub (e.g., `weather-reviewer`).
@@ -77,7 +91,6 @@ COPY weather_reviewer.py .
 CMD ["python", "weather_reviewer.py"]
 ```
 
-
 # **Step 4: Add Dependencies**
 
 1. Create a `requirements.txt` file to install required packages.
@@ -128,6 +141,14 @@ jobs:
             weather-reviewer:latest
 ```
 
+
+- Create a account in openweathermap
+- Navigate to your profile
+- check for your API keys
+- You can use default key then copy the key which is long alphanumeric string or you can create your key on your own.
+
+![Keys](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/open%20weather.png).
+
 # **Step 6: Configure GitHub Secrets**
 
 1. Go to your GitHub repo > Settings > Secrets and variables > Actions.
@@ -136,6 +157,8 @@ jobs:
 4. CITY → Your city name
 5. EMAIL → Your email address
 6. PASSWORD → Your email password (use app password for Gmail)
+
+![GitHub Secrets](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/secreats.png).
 
 You can generate your app password in you google acocount security --> app password (copy the 16 characters long code to use it in github actions.
 # **Step 7: Push Code to GitHub**
@@ -147,10 +170,36 @@ git init
 git status
 git add .
 git commit -m "Initial commit - Weather Notifier"
+```
+
+![Git init](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/git%20init.png).
+
+```bash
+git remote add origin https://github.com/<your-username>/<your-repo>.git # Replace <your-username> and <your-repo> with your actual GitHub details.
+```
+
+![Remote access](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/remote.png).
+
+```bash
+git branch -M main
 git push origin main
 ```
+
+![Push to main](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/git%20push.png).
+
 Check the branch you are pushing to main or master.
 2. GitHub Actions will automatically build & run the workflow.
+
+![Succussful build](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/build%202.png).
+
+- The Workflow using github actions is successflly done.
+
+![GitHub actions jobs](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/job%20success.png).
+
+
+I error occured check the application locally using docker build using docker desktop, if the build is succuss it not the local machine or docker file issue it is the issue with GitHub Actions workflow jobs check the logs of GitHub Actions workflow.
+![Docker locally](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/local%20test.png).
+
 
 # **Step 8: Verify the Automation**
 1. Go to GitHub Actions tab in your repo.
@@ -161,6 +210,9 @@ Check the branch you are pushing to main or master.
 - Once the automation is successful, you'll receive an email notification like:
 - 📩 Subject: Weather Update for Hyderabad
 - 📧 Body: The current weather in Hyderabad is: Haze.
+It look like
+
+1[result](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/success%20email.png).
 
 
 # **Automate Daily Weather Updates**
