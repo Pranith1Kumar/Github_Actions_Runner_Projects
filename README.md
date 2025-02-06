@@ -3,6 +3,10 @@
 This project fetches weather data from OpenWeatherMap and sends email notifications. GitHub Actions will automate Docker image creation and execution.
 
 
+Project Flow:
+![Project flow](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/cc63fb9cc6d405c2295c7b08936d74c3bdf28ae0/proj-images/GA-Weather-app.drawio.png)
+
+
 Project structure:
 
 ```graphql
@@ -71,7 +75,7 @@ if __name__ == "__main__":
 
 # **🐳 Step 3: Create a Dockerfile**
 
-Add a Dockerfile to containerize the application.
+- Add a Dockerfile to containerize the application.
 
 ```dockerfile
 # Use a lightweight Python image
@@ -147,7 +151,7 @@ jobs:
 - check for your API keys
 - You can use default key then copy the key which is long alphanumeric string or you can create your key on your own.
 
-![Keys](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/open%20weather.png).
+![Keys](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/open%20weather.png)
 
 # **Step 6: Configure GitHub Secrets**
 
@@ -158,7 +162,7 @@ jobs:
 5. EMAIL → Your email address
 6. PASSWORD → Your email password (use app password for Gmail)
 
-![GitHub Secrets](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/secreats.png).
+![GitHub Secrets](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/secreats.png)
 
 You can generate your app password in you google acocount security --> app password (copy the 16 characters long code to use it in github actions.
 # **Step 7: Push Code to GitHub**
@@ -172,33 +176,34 @@ git add .
 git commit -m "Initial commit - Weather Notifier"
 ```
 
-![Git init](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/git%20init.png).
+![Git init](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/git%20init.png)
 
 ```bash
 git remote add origin https://github.com/<your-username>/<your-repo>.git # Replace <your-username> and <your-repo> with your actual GitHub details.
 ```
 
-![Remote access](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/remote.png).
+![Remote access](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/remote.png)
 
 ```bash
 git branch -M main
 git push origin main
 ```
 
-![Push to main](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/git%20push.png).
+![Push to main](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/f5fc377782855f33c631af6e3e8509ad406e829f/proj-images/git%20push.png)
 
 Check the branch you are pushing to main or master.
+
 2. GitHub Actions will automatically build & run the workflow.
 
-![Succussful build](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/build%202.png).
+![Succussful build](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/build%202.png)
 
 - The Workflow using github actions is successflly done.
 
-![GitHub actions jobs](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/job%20success.png).
+![GitHub actions jobs](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/job%20success.png)
 
 
-I error occured check the application locally using docker build using docker desktop, if the build is succuss it not the local machine or docker file issue it is the issue with GitHub Actions workflow jobs check the logs of GitHub Actions workflow.
-![Docker locally](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/local%20test.png).
+If error occured check the application locally using docker build using docker desktop, if the build is succuss it not the local machine or docker file issue it is the issue with GitHub Actions workflow jobs check the logs of GitHub Actions workflow.
+![Docker locally](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/local%20test.png)
 
 
 # **Step 8: Verify the Automation**
@@ -210,9 +215,9 @@ I error occured check the application locally using docker build using docker de
 - Once the automation is successful, you'll receive an email notification like:
 - 📩 Subject: Weather Update for Hyderabad
 - 📧 Body: The current weather in Hyderabad is: Haze.
-It look like
 
-1[result](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/12781b6c4218fd03f402cf8e9bcfda6d60a1434e/proj-images/success%20email.png).
+It look like
+![result](https://github.com/Pranith1Kumar/Github_Actions_Runner_Projects/blob/7c3b5a392a7e699df4f5aff2ca592f19bf6edde8/proj-images/success%20email.png)
 
 
 # **Automate Daily Weather Updates**
