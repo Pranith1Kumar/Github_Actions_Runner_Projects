@@ -228,3 +228,10 @@ on:
   schedule:
     - cron: "0 9 * * *"  # Runs every day at 9 AM UTC
 ```
+This will notify the daily weather report at 9:00AM to our mail.
+
+
+
+# **Project Cleanup**
+- To stop getting notified you need to remove the EMAIL and PASSWORD from github actions workflow.
+- If you running locally you need to stop the container using `docker rm <container-id>`.
