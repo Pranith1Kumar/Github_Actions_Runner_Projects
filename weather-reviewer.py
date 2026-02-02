@@ -12,8 +12,12 @@ PASSWORD = os.getenv("PASSWORD")
 def get_weather():
     url = f"http://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}"
     response = requests.get(url).json()
-    weather = response['weather'][0]['description']
-    return weather
+    if 'weather' in response:
+        weather = response['weather'][0]['description']
+        return weather
+    else:
+        error_message = response.get('message', 'Failed to retrieve weather data.')
+        raise Exception(f"API Error: {error_message}")
 
 def send_email(weather):
     msg = EmailMessage()
